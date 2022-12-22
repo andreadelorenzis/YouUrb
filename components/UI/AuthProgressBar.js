@@ -16,21 +16,21 @@ const AuthProgressBar = ({ step }) => {
 
     useEffect(() => {
         let value = 0.2;
-        if (step === 'step3') {
+        if (step === 3) {
             value = 0.8;
             setSelectedCircle({
                 circle1: true,
                 circle2: true,
                 circle3: true
             });
-        } else if (step === 'step2') {
+        } else if (step === 2) {
             value = 0.5;
             setSelectedCircle({
                 circle1: true,
                 circle2: true,
                 circle3: false
             });
-        } else if (step === 'step1') {
+        } else if (step === 1) {
             value = 0.2;
             setSelectedCircle({
                 circle1: true,
@@ -45,7 +45,7 @@ const AuthProgressBar = ({ step }) => {
             useNativeDriver: false
         }).start();
 
-    }, []);
+    }, [step]);
 
     return (
         <View style={styles.container}>

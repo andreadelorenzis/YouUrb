@@ -7,7 +7,10 @@ export default function CustomTextInput({
     type,
     onChangeText,
     value,
-    style
+    style,
+    keyboardType,
+    secure,
+    otherProps
 }) {
 
     return (
@@ -18,6 +21,10 @@ export default function CustomTextInput({
                 placeholder={placeholder}
                 value={value}
                 onChangeText={onChangeText.bind(this, type)}
+                autoCapitalize='none'
+                keyboardType={keyboardType}
+                secureTextEntry={secure}
+                {...otherProps}
             />
         </View>
     )

@@ -27,7 +27,7 @@ export default function Landing() {
                     Crea un nuovo account
                 </ActionButton>
                 <ActionButton
-                    mode='flat'
+                    mode='transparent'
                     onPress={openLoginHandler}
                 >
                     Accedi
