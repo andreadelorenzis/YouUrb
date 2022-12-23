@@ -44,9 +44,18 @@ function LoginScreen() {
 
         setIsLoading(true);
         try {
+            // Login
             const authObj = await loginUser(email, password);
-            authCtx.authenticate(authObj.token, authObj.refreshToken);
+
+            // Get user data
+            const userString = await AsyncStorage.getItem('user');
+            const user = JSON.parse(userString);
+
+            // Save user object and tokens in state
+            authCtx.authenticate(authObj.token, authObj.refreshToken, user);
             AsyncStorage.setItem('start-time', JSON.stringify(Date.now()));
+
+            console.log(user);
         } catch (error) {
             Alert.alert(
                 'Errore',

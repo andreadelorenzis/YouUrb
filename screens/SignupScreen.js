@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { View, Text, Button, StyleSheet, Picker } from 'react-native';
+import { View, Text, Button, StyleSheet, Picker, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import Checkbox from 'expo-checkbox';
@@ -14,6 +14,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import KeyboardAvoidingView from 'react-native/Libraries/Components/Keyboard/KeyboardAvoidingView';
 import { createUser } from '../utils/Requests';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { User } from '../models/user';
 
 function SignupScreen() {
     const [accountInfo, setAccountInfo] = useState({
@@ -119,13 +120,13 @@ function SignupScreen() {
                 accountInfo.password === '' ||
                 accountInfo.confirmPassword === ''
             ) {
-                alert('Tutti i campi sono obbligatori');
+                Alert.alert('Tutti i campi sono obbligatori');
                 return;
             } else if (!validateEmail(accountInfo.email)) {
-                alert('Email non valida');
+                Alert.alert('Email non valida');
                 return;
             } else if (accountInfo.password !== accountInfo.confirmPassword) {
-                alert('Le password non coincidono');
+                Alert.alert('Le password non coincidono');
                 return;
             }
         } else if (currentStep === 2) {
@@ -135,13 +136,13 @@ function SignupScreen() {
                 personalInfo.faculty === '' ||
                 personalInfo.cellphone === ''
             ) {
-                alert('Tutti i campi sono obbligatori');
+                Alert.alert('Tutti i campi sono obbligatori');
                 return;
             } else if (!validateCellphone(personalInfo.cellphone)) {
-                alert('Numero di cellulare non valido');
+                Alert.alert('Numero di cellulare non valido');
                 return;
             } else if (!personalInfo.termsOfUse || !personalInfo.privacyPolicy) {
-                alert('Accetta i termini di utilizzo e la privacy policy');
+                Alert.alert('Accetta i termini di utilizzo e la privacy policy');
                 return;
             }
         }
@@ -152,8 +153,7 @@ function SignupScreen() {
                 return curStep + 1;
             });
         } else {
-
-            navigation.replace('Home');
+            signupHandler();
         }
     };
 
@@ -163,30 +163,33 @@ function SignupScreen() {
                 return curStep - 1;
             });
         } else {
-            signupHandler();
+            navigation.goBack();
         }
     };
 
     async function signupHandler() {
-        console.log('Name: ' + accountInfo.name);
-        console.log('Surname: ' + accountInfo.surname);
-        console.log('Email: ' + accountInfo.email);
-        console.log('Password: ' + accountInfo.password);
-        console.log('Address: ' + personalInfo.address);
-        console.log('Fiscal Code: ' + personalInfo.fiscalCode);
-        console.log('Faculty: ' + personalInfo.faculty);
-        console.log('Cellphone: ' + personalInfo.cellphone);
-        console.log('Terms of Use: ' + personalInfo.termsOfUse);
-        console.log('Privacy Policy: ' + personalInfo.privacyPolicy);
-        // navigation.navigate('Landing');
+        setIsLoading(true);
 
         try {
-            setIsLoading(true);
+            // Create user account in authentication service
             const authObj = await createUser(accountInfo.email, accountInfo.password);
-            console.log(authObj);
-            authCtx.authenticate(authObj.token, authObj.refreshToken);
-            AsyncStorage.setItem('start-time', JSON.stringify(Date.now()));
+
+            // Create user object and save it in storage
+            const user = new User(
+                accountInfo.name,
+                accountInfo.surname,
+                personalInfo.address,
+                personalInfo.fiscalCode,
+                personalInfo.faculty,
+                personalInfo.cellphone,
+            );
+            const userString = JSON.stringify(user);
+            await AsyncStorage.setItem('user', userString);
+
+            // Save user object and tokens in state
+            authCtx.authenticate(authObj.token, authObj.refreshToken, user);
         } catch (error) {
+            console.warn(error);
             Alert.alert(
                 'Errore',
                 'Si è verificato un errore durante la registrazione. Riprova più tardi.',
@@ -231,6 +234,7 @@ function SignupScreen() {
                         placeholder="Inserisci la tua password"
                         onChangeText={updateInputValueHandler}
                         value={accountInfo.password}
+                        secure={true}
                     />
                     <TextInput
                         label={'Conferma password:'}
@@ -238,6 +242,7 @@ function SignupScreen() {
                         placeholder="Conferma la tua password"
                         onChangeText={updateInputValueHandler}
                         value={accountInfo.confirmPassword}
+                        secure={true}
                     />
                 </>
             );
@@ -305,33 +310,12 @@ function SignupScreen() {
             break;
     }
 
-    const demoContent = (
-        <>
-            <TextInput
-                label={'Email:'}
-                type='email'
-                placeholder="Inserisci il tuo email"
-                onChangeText={updateInputValueHandler}
-                value={accountInfo.email}
-                keyboardType='email-address'
-                isInvalid={() => { console.log('invalid') }}
-            />
-            <TextInput
-                label={'Password:'}
-                type='password'
-                placeholder="Inserisci la tua password"
-                onChangeText={updateInputValueHandler}
-                value={accountInfo.password}
-            />
-        </>
-    );
-
     return (
         <View style={styles.container}>
             <AuthProgressBar step={currentStep} />
             <KeyboardAvoidingView style={styles.formContainer}>
                 <ScrollView>
-                    {isLoading ? <Text>Loading...</Text> : demoContent}
+                    {isLoading ? <Text>Loading...</Text> : content}
                 </ScrollView>
             </KeyboardAvoidingView>
             <View style={styles.buttonContainer}>
@@ -343,7 +327,7 @@ function SignupScreen() {
                     Indietro
                 </ActionButton>
                 <ActionButton
-                    onPress={signupHandler}
+                    onPress={nextPressHandler}
                     iconRight={<Ionicons name="ios-arrow-forward" size={24} color="#ffffff" />}
                 >
                     Avanti

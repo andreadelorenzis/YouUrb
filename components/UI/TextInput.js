@@ -22,7 +22,7 @@ export default function CustomTextInput({
                 value={value}
                 onChangeText={onChangeText.bind(this, type)}
                 autoCapitalize='none'
-                keyboardType={keyboardType}
+                keyboardType={keyboardType || 'default'}
                 secureTextEntry={secure}
                 {...otherProps}
             />
