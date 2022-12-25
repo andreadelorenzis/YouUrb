@@ -1,9 +1,12 @@
 import { View, Text, Image, StyleSheet, Pressable } from "react-native"
 import ProfilePicture from "../User/ProfilePicture"
 
-export default function FoodCard({ food, style, onPress }) {
+export default function FoodCard({ food, expand, style, onPress }) {
     return (
-        <Pressable style={[styles.container, style]} onPress={onPress}>
+        <Pressable style={[
+            styles.container, style, expand && styles.expanded
+        ]}
+            onPress={onPress}>
             <Image source={food.imageUri} style={styles.image} />
             <Text style={styles.name}>{food.name}</Text>
             <Text style={styles.price}>{food.price}</Text>
@@ -26,10 +29,16 @@ const styles = StyleSheet.create({
         elevation: 5,
         borderRadius: 10,
         padding: 20,
-        width: 150,
-        height: 210,
+        width: 160,
+        height: 220,
         marginRight: 20,
         marginBottom: 10
+    },
+    expanded: {
+        flex: 1,
+        marginRight: 5,
+        maxWidth: '48%',
+        marginLeft: 5
     },
     imageContainer: {
         width: '100%',
@@ -37,8 +46,8 @@ const styles = StyleSheet.create({
     },
     image: {
         width: '100%',
-        height: 60,
-        resizeMode: 'cover',
+        height: 85,
+        resizeMode: 'contain',
         overflow: 'hidden'
     },
     name: {
@@ -49,12 +58,6 @@ const styles = StyleSheet.create({
     },
     price: {
         fontSize: 18,
-        marginVertical: 5,
         fontWeight: 'bold'
     },
-    userText: {
-        fontSize: 14,
-        textDecorationLine: 'underline',
-        marginLeft: 8
-    }
 });

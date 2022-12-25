@@ -3,12 +3,14 @@ import { useContext, useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AuthContext } from '../store/auth-context';
 import ProfilePicture from '../components/User/ProfilePicture';
-import data from '../store/mockdata';
+import { FOODS, RIDES } from '../store/mockdata';
 import FoodCard from '../components/NoWaste/FoodCard';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { Colors } from '../constants/Colors';
 import RideCard from '../components/ChatCar/RideCard';
 import { useNavigation } from '@react-navigation/native';
+import FoodsList from '../components/NoWaste/FoodsList';
+import RidesList from '../components/ChatCar/RidesList';
 
 export default function HomeScreen() {
     const [isLoading, setIsLoading] = useState(false);
@@ -20,28 +22,6 @@ export default function HomeScreen() {
     if (isLoading) {
         return <Text>Loading...</Text>
     }
-
-    function renderFoodItem(itemData) {
-        function pressFoodHandler() {
-            navigation.navigate('FoodDetails', {
-                foodId: itemData.item.id
-            });
-        }
-
-        return <FoodCard food={itemData.item} onPress={pressFoodHandler} />
-    }
-
-    function renderRideItem(itemData) {
-        function pressRideHandler() {
-            navigation.navigate('RideDetails', {
-                rideId: itemData.item.id
-            });
-        }
-
-        return <RideCard ride={itemData.item} onPress={pressRideHandler} />
-    }
-
-
 
     return (
         <>
@@ -57,34 +37,34 @@ export default function HomeScreen() {
                         <Text style={styles.welcomeHeaderText}>Bentornato, {"\n"}
                             {user.name}!</Text>
                     </View>
-                    <View style={styles.foodsContainer}>
+                    <View>
                         <View style={styles.foodsHeader}>
                             <Text style={styles.foodsHeaderText}>Cibi disponibili</Text>
                             <TouchableOpacity>
                                 <Text style={styles.foodsHeaderButton}>Vedi tutti</Text>
                             </TouchableOpacity>
                         </View>
-                        <FlatList
-                            horizontal={true}
-                            data={data.foods}
-                            keyExtractor={(item) => item.id}
-                            renderItem={renderFoodItem}
-                            ListHeaderComponent={<View style={styles.margin} />}
+                        <FoodsList
+                            foods={FOODS}
+                            listOptions={{
+                                horizontal: true,
+                                ListHeaderComponent: <View style={styles.margin} />
+                            }}
                         />
                     </View>
-                    <View style={styles.ridesContainer}>
+                    <View>
                         <View style={styles.ridesHeader}>
                             <Text style={styles.ridesHeaderText}>Viaggi disponibili</Text>
                             <TouchableOpacity>
                                 <Text style={styles.ridesHeaderButton}>Vedi tutti</Text>
                             </TouchableOpacity>
                         </View>
-                        <FlatList
-                            horizontal={true}
-                            data={data.rides}
-                            keyExtractor={(item) => item.id}
-                            renderItem={renderRideItem}
-                            ListHeaderComponent={<View style={styles.margin} />}
+                        <RidesList
+                            rides={RIDES}
+                            listOptions={{
+                                horizontal: true,
+                                ListHeaderComponent: <View style={styles.margin} />
+                            }}
                         />
                     </View>
                 </ScrollView>
@@ -108,15 +88,11 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginLeft: 20
     },
-    foodsContainer: {
-        paddingVertical: 10,
-        flex: 1,
-    },
     foodsHeader: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginBottom: 20,
+        marginBottom: 10,
         paddingHorizontal: 20
     },
     foodsHeaderText: {
@@ -145,10 +121,7 @@ const styles = StyleSheet.create({
         textDecorationLine: 'underline',
         fontWeight: 'bold'
     },
-    ridesContainer: {
-        marginBottom: 40
-    },
     margin: {
-        marginLeft: 20,
+        marginLeft: 20
     }
 });

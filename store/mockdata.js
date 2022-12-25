@@ -1,100 +1,230 @@
-const data = {
-    foods: [
-        {
-            name: "Uova",
-            price: '2,00€',
-            user: {
-                name: "Mary81",
-                imageUri: require("../assets/people/vicky.jpg"),
-            },
-            imageUri: require("../assets/foods/uova.jpg"),
-            id: Math.random().toString(36).substring(2, 9)
-        },
-        {
-            name: "Rigatoni",
-            price: '1,50€',
-            user: {
-                name: "andrew22",
-                imageUri: require("../assets/people/craig.jpg"),
-            },
-            imageUri: require("../assets/foods/rigatoni.jpg"),
-            id: Math.random().toString(36).substring(2, 9)
-        },
-        {
-            name: "Riso",
-            price: '3,00€',
-            user: {
-                name: "ethanD",
-                imageUri: require("../assets/people/ethan.jpg"),
-            },
-            imageUri: require("../assets/foods/riso.jpg"),
-            id: Math.random().toString(36).substring(2, 9)
-        },
-        {
-            name: "Tonno",
-            price: '2,00€',
-            user: {
-                name: "julian99",
-                imageUri: require("../assets/people/julian.jpg"),
-            },
-            imageUri: require("../assets/foods/tonno.jpg"),
-            id: Math.random().toString(36).substring(2, 9)
-        },
-    ],
-    rides: [
-        {
-            departure: 'Urbino',
-            destination: 'Roma',
-            date: "24/01/2022",
-            price: '5,00€',
-            totalSeats: 4,
-            occupiedSeats: 2,
-            user: {
-                name: "marcolol",
-                imageUri: require("../assets/people/luis.jpg"),
-            },
-            id: Math.random().toString(36).substring(2, 9)
-        },
-        {
-            departure: 'Urbino',
-            destination: 'Milano',
-            date: "24/01/2022",
-            price: '12,00€',
-            totalSeats: 4,
-            occupiedSeats: 3,
-            user: {
-                name: "sMarcus11",
-                imageUri: require("../assets/people/michael.jpg"),
-            },
-            id: Math.random().toString(36).substring(2, 9)
-        },
-        {
-            departure: 'Urbino',
-            destination: 'Bologna',
-            date: "24/01/2022",
-            price: '4,50€',
-            totalSeats: 4,
-            occupiedSeats: 0,
-            user: {
-                name: "davincisara",
-                imageUri: require("../assets/people/jason.jpg"),
-            },
-            id: Math.random().toString(36).substring(2, 9)
-        },
-        {
-            departure: 'Urbino',
-            destination: 'Ancona',
-            date: "24/01/2022",
-            price: '4,00€',
-            totalSeats: 4,
-            occupiedSeats: 0,
-            user: {
-                name: "Mary81",
-                imageUri: require("../assets/people/vicky.jpg"),
-            },
-            id: Math.random().toString(36).substring(2, 9)
-        }
-    ]
-}
+import { FoodCategory } from "../models/FoodCategory";
+import { Food } from "../models/Food";
+import { Ride } from "../models/Ride";
 
-export default data;
+export const CATEGORIES = [
+    new FoodCategory(
+        'Frutta e verdura',
+        require('../assets/foods/frutta.jpg'),
+        'cat1',
+    ),
+    new FoodCategory(
+        'Carne e pesce',
+        require('../assets/foods/carne_pesce.jpg'),
+        'cat2',
+    ),
+    new FoodCategory(
+        'Pane e dolci',
+        require('../assets/foods/pane.jpg'),
+        'cat3',
+    ),
+    new FoodCategory(
+        'Prodotti latticino caseari',
+        require('../assets/foods/formaggi.jpg'),
+        'cat4',
+    ),
+    new FoodCategory(
+        'Pasta riso e cereali',
+        require('../assets/foods/pasta.jpg'),
+        'cat5',
+    ),
+    new FoodCategory(
+        'Alimenti salati e snack',
+        require('../assets/foods/snack.jpg'),
+        'cat6',
+    ),
+    new FoodCategory(
+        'Surgelati e gelati',
+        require('../assets/foods/gelato.jpg'),
+        'cat7',
+    ),
+    new FoodCategory(
+        'Bevande',
+        require('../assets/foods/bevande.jpg'),
+        'cat8',
+    ),
+    new FoodCategory(
+        'Prodotti da dispensa',
+        require('../assets/foods/tonno.jpg'),
+        'cat9',
+    )
+];
+
+export const FOODS = [
+    new Food(
+        "Uova",
+        '2,00€',
+        require("../assets/foods/uova.jpg"),
+        {
+            name: "Mary81",
+            imageUri: require("../assets/people/vicky.jpg"),
+        },
+        ['cat4'],
+        Math.random().toString(36).substring(2, 9),
+    ),
+    new Food(
+        "Uova",
+        '2,00€',
+        require("../assets/foods/uova.jpg"),
+        {
+            name: "Mary81",
+            imageUri: require("../assets/people/vicky.jpg"),
+        },
+        ['cat4'],
+        Math.random().toString(36).substring(2, 9),
+    ),
+    new Food(
+        "Uova",
+        '2,00€',
+        require("../assets/foods/uova.jpg"),
+        {
+            name: "Mary81",
+            imageUri: require("../assets/people/vicky.jpg"),
+        },
+        ['cat4'],
+        Math.random().toString(36).substring(2, 9),
+    ),
+    new Food(
+        "Uova",
+        '2,00€',
+        require("../assets/foods/uova.jpg"),
+        {
+            name: "Mary81",
+            imageUri: require("../assets/people/vicky.jpg"),
+        },
+        ['cat4'],
+        Math.random().toString(36).substring(2, 9),
+    ),
+    new Food(
+        "Uova",
+        '2,00€',
+        require("../assets/foods/uova.jpg"),
+        {
+            name: "Mary81",
+            imageUri: require("../assets/people/vicky.jpg"),
+        },
+        ['cat4'],
+        Math.random().toString(36).substring(2, 9),
+    ),
+    new Food(
+        "Uova",
+        '2,00€',
+        require("../assets/foods/uova.jpg"),
+        {
+            name: "Mary81",
+            imageUri: require("../assets/people/vicky.jpg"),
+        },
+        ['cat4'],
+        Math.random().toString(36).substring(2, 9),
+    ),
+    new Food(
+        "Uova",
+        '2,00€',
+        require("../assets/foods/uova.jpg"),
+        {
+            name: "Mary81",
+            imageUri: require("../assets/people/vicky.jpg"),
+        },
+        ['cat4'],
+        Math.random().toString(36).substring(2, 9),
+    ),
+    new Food(
+        "Rigatoni",
+        '1,50€',
+        require("../assets/foods/rigatoni.jpg"),
+        {
+            name: "andrew22",
+            imageUri: require("../assets/people/craig.jpg"),
+        },
+        ['cat5'],
+        Math.random().toString(36).substring(2, 9),
+    ),
+    new Food(
+        "Riso",
+        '3,00€',
+        require("../assets/foods/riso.jpg"),
+        {
+            name: "ethanD",
+            imageUri: require("../assets/people/ethan.jpg"),
+        },
+        ['cat5'],
+        Math.random().toString(36).substring(2, 9),
+    ),
+    new Food(
+        "Tonno",
+        '2,00€',
+        require("../assets/foods/tonno.jpg"),
+        {
+            name: "julian99",
+            imageUri: require("../assets/people/julian.jpg"),
+        },
+        ['cat9'],
+        Math.random().toString(36).substring(2, 9),
+    )
+];
+
+export const RIDES = [
+    new Ride(
+        'Urbino',
+        'Roma',
+        "24/01/2022",
+        '5,00€',
+        4,
+        2,
+        {
+            name: "marcolol",
+            imageUri: require("../assets/people/luis.jpg"),
+        },
+        Math.random().toString(36).substring(2, 9)
+    ),
+    new Ride(
+        'Urbino',
+        'Milano',
+        "24/01/2022",
+        '12,00€',
+        4,
+        3,
+        {
+            name: "sMarcus11",
+            imageUri: require("../assets/people/michael.jpg"),
+        },
+        Math.random().toString(36).substring(2, 9)
+    ),
+    new Ride(
+        'Urbino',
+        'Bologna',
+        "24/01/2022",
+        '4,50€',
+        4,
+        0,
+        {
+            name: "davincisara",
+            imageUri: require("../assets/people/jason.jpg"),
+        },
+        Math.random().toString(36).substring(2, 9)
+    ),
+    new Ride(
+        'Urbino',
+        'Ancona',
+        "24/01/2022",
+        '4,00€',
+        4,
+        0,
+        {
+            name: "Mary81",
+            imageUri: require("../assets/people/vicky.jpg"),
+        },
+        Math.random().toString(36).substring(2, 9)
+    ),
+];
+
+export function simulateFetch() {
+    return new Promise((resolve, reject) => {
+        // Simulate a delay of 1 second
+        setTimeout(() => {
+            let response = {}
+            // Resolve the promise with the data
+            resolve(response);
+        }, 1000);
+    });
+}

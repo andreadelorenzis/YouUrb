@@ -19,11 +19,12 @@ import { refreshAuth } from './utils/Requests';
 import IconButton from './components/UI/IconButton';
 import NoWasteHomeScreen from './screens/NoWaste/HomeScreen';
 import UrbinoChatCarScreen from './screens/UrbinoChatCar/HomeScreen';
-import { User } from './models/user';
+import { User } from './models/User';
 import { Colors } from './constants/Colors';
 import ProfileScreen from './screens/ProfileScreen';
-import FoodDetails from './screens/NoWaste/FoodDetails';
-import RideDetails from './screens/UrbinoChatCar/RideDetails';
+import FoodDetailsScreen from './screens/NoWaste/FoodDetailsScreen';
+import RideDetailsScreen from './screens/UrbinoChatCar/RideDetails';
+import CategoryFoodsScreen from './screens/NoWaste/CategoryFoodsScreen';
 
 const Stack = createNativeStackNavigator();
 const BottomTabs = createBottomTabNavigator();
@@ -128,15 +129,19 @@ function AuthenticatedStack() {
         }}
       />
       <Stack.Screen
+        name="FoodsCategory"
+        component={CategoryFoodsScreen}
+      />
+      <Stack.Screen
         name='FoodDetails'
-        component={FoodDetails}
+        component={FoodDetailsScreen}
         options={{
           title: 'Dettagli'
         }}
       />
       <Stack.Screen
         name='RideDetails'
-        component={RideDetails}
+        component={RideDetailsScreen}
       />
     </Stack.Navigator>
   }

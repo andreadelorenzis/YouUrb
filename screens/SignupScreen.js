@@ -14,7 +14,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import KeyboardAvoidingView from 'react-native/Libraries/Components/Keyboard/KeyboardAvoidingView';
 import { createUser } from '../utils/Requests';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { User } from '../models/user';
+import { User } from '../models/User';
 
 function SignupScreen() {
     const [accountInfo, setAccountInfo] = useState({
