@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 
-const Loading = ({ text }) => {
+function LoadingOverlay({ text }) {
 
     return (
         <View style={styles.container}>
@@ -28,4 +28,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Loading;
+export default LoadingOverlay;

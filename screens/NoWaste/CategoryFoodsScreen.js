@@ -7,7 +7,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { Colors } from "../../constants/Colors";
 import SearchBar from "../../components/UI/SearchBar";
 import { simulateFetch } from "../../store/mockdata";
-import Loading from "../../components/UI/Loading";
+import LoadingOverlay from "../../components/UI/LoadingOverlay";
 import Tag from "../../components/UI/Tag";
 
 export default function CategoryFoodsScreen({ route, navigation }) {
@@ -78,7 +78,7 @@ export default function CategoryFoodsScreen({ route, navigation }) {
     }
 
     if (isFetching) {
-        return <Loading text="Preparando i cibi..." />
+        return <LoadingOverlay text="Preparando i cibi..." />
     }
 
     const TagsContainer = (

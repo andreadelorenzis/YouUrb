@@ -53,6 +53,7 @@ export const CATEGORIES = [
 export const FOODS = [
     new Food(
         "Uova",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         '2,00€',
         require("../assets/foods/uova.jpg"),
         {
@@ -64,6 +65,7 @@ export const FOODS = [
     ),
     new Food(
         "Uova",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         '2,00€',
         require("../assets/foods/uova.jpg"),
         {
@@ -75,6 +77,7 @@ export const FOODS = [
     ),
     new Food(
         "Uova",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         '2,00€',
         require("../assets/foods/uova.jpg"),
         {
@@ -86,6 +89,7 @@ export const FOODS = [
     ),
     new Food(
         "Uova",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         '2,00€',
         require("../assets/foods/uova.jpg"),
         {
@@ -97,6 +101,7 @@ export const FOODS = [
     ),
     new Food(
         "Uova",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         '2,00€',
         require("../assets/foods/uova.jpg"),
         {
@@ -108,6 +113,7 @@ export const FOODS = [
     ),
     new Food(
         "Uova",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         '2,00€',
         require("../assets/foods/uova.jpg"),
         {
@@ -119,6 +125,7 @@ export const FOODS = [
     ),
     new Food(
         "Uova",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         '2,00€',
         require("../assets/foods/uova.jpg"),
         {
@@ -130,6 +137,7 @@ export const FOODS = [
     ),
     new Food(
         "Rigatoni",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         '1,50€',
         require("../assets/foods/rigatoni.jpg"),
         {
@@ -141,6 +149,7 @@ export const FOODS = [
     ),
     new Food(
         "Riso",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         '3,00€',
         require("../assets/foods/riso.jpg"),
         {
@@ -152,6 +161,7 @@ export const FOODS = [
     ),
     new Food(
         "Tonno",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         '2,00€',
         require("../assets/foods/tonno.jpg"),
         {
@@ -162,6 +172,11 @@ export const FOODS = [
         Math.random().toString(36).substring(2, 9),
     )
 ];
+
+export const CART = [
+    FOODS[0],
+    FOODS[1]
+]
 
 export const RIDES = [
     new Ride(

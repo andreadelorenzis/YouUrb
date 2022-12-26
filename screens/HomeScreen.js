@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AuthContext } from '../store/auth-context';
 import ProfilePicture from '../components/User/ProfilePicture';
-import { FOODS, RIDES } from '../store/mockdata';
+import { FOODS, RIDES, simulateFetch } from '../store/mockdata';
 import FoodCard from '../components/NoWaste/FoodCard';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { Colors } from '../constants/Colors';
@@ -11,16 +11,36 @@ import RideCard from '../components/ChatCar/RideCard';
 import { useNavigation } from '@react-navigation/native';
 import FoodsList from '../components/NoWaste/FoodsList';
 import RidesList from '../components/ChatCar/RidesList';
+import LoadingOverlay from '../components/UI/LoadingOverlay';
+import { FoodContext } from '../store/foods-context';
 
 export default function HomeScreen() {
-    const [isLoading, setIsLoading] = useState(false);
+    const [isFetching, setIsFetching] = useState(false);
 
     const user = useContext(AuthContext).user;
 
     const navigation = useNavigation();
 
-    if (isLoading) {
-        return <Text>Loading...</Text>
+    const foodsCtx = useContext(FoodContext);
+
+    // fetch foods on app start
+    useEffect(() => {
+        async function fetchFoods() {
+            setIsFetching(true);
+            try {
+                const response = await simulateFetch();
+                foodsCtx.loadFoods(FOODS);
+            } catch (error) {
+                console.warn(error);
+            }
+            setIsFetching(false);
+        }
+
+        fetchFoods();
+    }, []);
+
+    if (isFetching) {
+        return <LoadingOverlay />
     }
 
     return (

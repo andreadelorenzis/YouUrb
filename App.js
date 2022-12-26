@@ -25,6 +25,9 @@ import ProfileScreen from './screens/ProfileScreen';
 import FoodDetailsScreen from './screens/NoWaste/FoodDetailsScreen';
 import RideDetailsScreen from './screens/UrbinoChatCar/RideDetails';
 import CategoryFoodsScreen from './screens/NoWaste/CategoryFoodsScreen';
+import CartScreen from './screens/NoWaste/CartScreen';
+import FoodsContextProvider from './store/foods-context';
+import { FOODS, simulateFetch } from './store/mockdata';
 
 const Stack = createNativeStackNavigator();
 const BottomTabs = createBottomTabNavigator();
@@ -143,6 +146,10 @@ function AuthenticatedStack() {
         name='RideDetails'
         component={RideDetailsScreen}
       />
+      <Stack.Screen
+        name='Cart'
+        component={CartScreen}
+      />
     </Stack.Navigator>
   }
 
@@ -177,7 +184,9 @@ function AuthenticatedStack() {
             icon="cart-outline"
             size={24}
             color={'gray'}
-            onPress={() => { }}
+            onPress={() => {
+              navigation.navigate('Cart');
+            }}
           />
           <IconButton
             style={styles.icon}
@@ -279,7 +288,9 @@ export default function App() {
     <>
       <StatusBar style="auto" />
       <AuthContextProvider>
-        <Root />
+        <FoodsContextProvider>
+          <Root />
+        </FoodsContextProvider>
       </AuthContextProvider>
     </>
   );

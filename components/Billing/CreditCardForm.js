@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { View, Button, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import Picker from '../UI/Picker';
 import TextInput from '../UI/TextInput';
-import ActionButton from '../UI/ActionButton';
+import Button from '../UI/Button';
 
 function CreditCardForm() {
     const [creditCardNumber, setCreditCardNumber] = useState('');
@@ -84,9 +84,9 @@ function CreditCardForm() {
                 value={name}
                 onChangeText={onInputChangeHandler}
             />
-            <ActionButton onPress={submitHandler} style={styles.button}>
+            <Button onPress={submitHandler} style={styles.button}>
                 Verifica
-            </ActionButton>
+            </Button>
         </View >
     );
 };

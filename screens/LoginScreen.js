@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 
 import TextInput from '../components/UI/TextInput';
-import ActionButton from '../components/UI/ActionButton';
+import Button from '../components/UI/Button';
 import { loginUser } from '../utils/Requests';
 import { AuthContext } from '../store/auth-context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -99,12 +99,12 @@ function LoginScreen() {
                                 <Text style={styles.link}>Email o password dimenticata?</Text>
                             </TouchableOpacity>
                         </View>
-                        <ActionButton
+                        <Button
                             style={styles.button}
                             onPress={submitHandler}
                         >
                             Accedi
-                        </ActionButton>
+                        </Button>
                     </>
             }
         </View>

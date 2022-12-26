@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { View, Text, Button, StyleSheet, Picker, Alert } from 'react-native';
+import { View, Text, StyleSheet, Picker, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import Checkbox from 'expo-checkbox';
@@ -8,7 +8,7 @@ import { AuthContext } from '../store/auth-context';
 import TextInput from '../components/UI/TextInput';
 import AuthProgressBar from '../components/UI/AuthProgressBar';
 import CreditCardForm from '../components/Billing/CreditCardForm';
-import ActionButton from '../components/UI/ActionButton';
+import Button from '../components/UI/Button';
 import { validateCellphone, validateEmail } from '../utils/Validation';
 import { ScrollView } from 'react-native-gesture-handler';
 import KeyboardAvoidingView from 'react-native/Libraries/Components/Keyboard/KeyboardAvoidingView';
@@ -319,19 +319,19 @@ function SignupScreen() {
                 </ScrollView>
             </KeyboardAvoidingView>
             <View style={styles.buttonContainer}>
-                <ActionButton
+                <Button
                     mode='cancel'
                     onPress={backPressHandler}
                     iconLeft={<Ionicons name="ios-arrow-back" size={24} color="#605959" />}
                 >
                     Indietro
-                </ActionButton>
-                <ActionButton
+                </Button>
+                <Button
                     onPress={nextPressHandler}
                     iconRight={<Ionicons name="ios-arrow-forward" size={24} color="#ffffff" />}
                 >
                     Avanti
-                </ActionButton>
+                </Button>
             </View>
         </View>
     );

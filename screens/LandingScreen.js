@@ -1,5 +1,5 @@
-import { Image, Text, View, Button } from "react-native";
-import ActionButton from "../components/UI/ActionButton";
+import { Image, Text, View } from "react-native";
+import Button from "../components/UI/Button";
 import { useNavigation } from '@react-navigation/native';
 
 export default function Landing() {
@@ -20,18 +20,18 @@ export default function Landing() {
                 style={styles.logoImage}
             />
             <View style={styles.buttonContainer}>
-                <ActionButton
+                <Button
                     style={styles.button}
                     onPress={openSignupHandler}
                 >
                     Crea un nuovo account
-                </ActionButton>
-                <ActionButton
+                </Button>
+                <Button
                     mode='transparent'
                     onPress={openLoginHandler}
                 >
                     Accedi
-                </ActionButton>
+                </Button>
             </View>
         </View>
     )

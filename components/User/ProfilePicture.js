@@ -33,11 +33,10 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         overflow: 'hidden',
-        marginRight: 5
+        marginRight: 10
     },
     textContainer: {
         justifyContent: 'center',
-        alignItems: 'center'
     },
     text: {
         textDecorationLine: 'underline'

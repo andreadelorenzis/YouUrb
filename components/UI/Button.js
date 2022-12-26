@@ -1,7 +1,7 @@
 import { Pressable, View, Text, StyleSheet } from "react-native";
 import { Colors } from "../../constants/Colors.js";
 
-export default function ActionButton({ children, onPress, mode, style, iconLeft, iconRight }) {
+export default function Button({ children, onPress, mode, style, iconLeft, iconRight }) {
     return (
         <View style={[styles.buttonContainer, style]}>
             <Pressable
@@ -32,10 +32,10 @@ const styles = StyleSheet.create({
     buttonContainer: {
         borderRadius: 4,
         overflow: 'hidden',
+        backgroundColor: Colors.red,
         width: 100
     },
     button: {
-        backgroundColor: Colors.red,
         padding: 8,
         height: 45,
         flexDirection: 'row',
