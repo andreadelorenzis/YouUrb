@@ -149,6 +149,9 @@ function AuthenticatedStack() {
       <Stack.Screen
         name='Cart'
         component={CartScreen}
+        options={{
+          title: "Carrello"
+        }}
       />
     </Stack.Navigator>
   }

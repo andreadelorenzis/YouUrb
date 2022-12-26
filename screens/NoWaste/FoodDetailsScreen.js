@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useLayoutEffect } from "react";
 import { StyleSheet, Text, View, Alert } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import Button from "../../components/UI/Button";
@@ -9,6 +9,7 @@ import ProfilePicture from "../../components/User/ProfilePicture";
 import { Colors } from "../../constants/Colors";
 import { FoodContext } from "../../store/foods-context";
 import { FOODS, simulateFetch } from "../../store/mockdata";
+import { formatPrice } from "../../utils/Validation";
 
 export default function FoodDetails({ route }) {
     const [isFetching, setIsFetching] = useState(true);
@@ -22,14 +23,17 @@ export default function FoodDetails({ route }) {
 
     useEffect(() => {
         fetchFood();
+    }, []);
 
+
+    useLayoutEffect(() => {
         // verify if this food is already added to cart
         const isFoodInCart = foodCtx.cartItems.some(item => item.id === foodId);
 
         if (isFoodInCart) {
             setInCart(true);
         }
-    }, []);
+    }, [foodCtx.cartItems]);
 
     async function fetchFood() {
         setIsFetching(true);
@@ -93,7 +97,7 @@ export default function FoodDetails({ route }) {
             <View style={styles.priceContainer}>
                 <Text style={styles.priceLabel}>Prezzo: </Text>
                 <View>
-                    <Text style={styles.price}>{food.price}</Text>
+                    <Text style={styles.price}>{formatPrice(food.price)}</Text>
                     <Text>Tutti i prezzi includono l'IVA</Text>
                 </View>
             </View>

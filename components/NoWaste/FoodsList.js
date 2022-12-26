@@ -20,12 +20,13 @@ export default function FoodsList({ foods, listOptions }) {
             expand = true;
         }
 
-        return <FoodCard
-            food={itemData.item}
-            onPress={pressFoodHandler}
-            expand={expand}
-        />
-
+        return (
+            <FoodCard
+                food={itemData.item}
+                onPress={pressFoodHandler}
+                expand={expand}
+            />
+        );
     }
 
     return (
@@ -46,4 +47,9 @@ const styles = StyleSheet.create({
         flex: 1,
         width: '100%'
     },
+    cardContainer: {
+        flex: 1,
+        width: '100%',
+        backgroundColor: 'red'
+    }
 });

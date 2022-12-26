@@ -54,7 +54,7 @@ export const FOODS = [
     new Food(
         "Uova",
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        '2,00€',
+        2.00,
         require("../assets/foods/uova.jpg"),
         {
             name: "Mary81",
@@ -66,7 +66,7 @@ export const FOODS = [
     new Food(
         "Uova",
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        '2,00€',
+        2.00,
         require("../assets/foods/uova.jpg"),
         {
             name: "Mary81",
@@ -78,7 +78,7 @@ export const FOODS = [
     new Food(
         "Uova",
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        '2,00€',
+        2.00,
         require("../assets/foods/uova.jpg"),
         {
             name: "Mary81",
@@ -90,7 +90,7 @@ export const FOODS = [
     new Food(
         "Uova",
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        '2,00€',
+        2.00,
         require("../assets/foods/uova.jpg"),
         {
             name: "Mary81",
@@ -102,7 +102,7 @@ export const FOODS = [
     new Food(
         "Uova",
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        '2,00€',
+        2.00,
         require("../assets/foods/uova.jpg"),
         {
             name: "Mary81",
@@ -114,7 +114,7 @@ export const FOODS = [
     new Food(
         "Uova",
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        '2,00€',
+        2.00,
         require("../assets/foods/uova.jpg"),
         {
             name: "Mary81",
@@ -126,7 +126,7 @@ export const FOODS = [
     new Food(
         "Uova",
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        '2,00€',
+        2.00,
         require("../assets/foods/uova.jpg"),
         {
             name: "Mary81",
@@ -138,7 +138,7 @@ export const FOODS = [
     new Food(
         "Rigatoni",
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        '1,50€',
+        1.50,
         require("../assets/foods/rigatoni.jpg"),
         {
             name: "andrew22",
@@ -150,7 +150,7 @@ export const FOODS = [
     new Food(
         "Riso",
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        '3,00€',
+        3.00,
         require("../assets/foods/riso.jpg"),
         {
             name: "ethanD",
@@ -162,7 +162,7 @@ export const FOODS = [
     new Food(
         "Tonno",
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        '2,00€',
+        2.00,
         require("../assets/foods/tonno.jpg"),
         {
             name: "julian99",

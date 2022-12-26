@@ -1,4 +1,6 @@
 import { View, Text, Image, StyleSheet, Pressable } from "react-native"
+import { Colors } from "../../constants/Colors";
+import { formatPrice } from "../../utils/Validation";
 import ProfilePicture from "../User/ProfilePicture"
 
 export default function FoodCard({ food, expand, style, onPress }) {
@@ -9,7 +11,7 @@ export default function FoodCard({ food, expand, style, onPress }) {
             onPress={onPress}>
             <Image source={food.imageUri} style={styles.image} />
             <Text style={styles.name}>{food.name}</Text>
-            <Text style={styles.price}>{food.price}</Text>
+            <Text style={styles.price}>{formatPrice(food.price)}</Text>
             <ProfilePicture
                 source={food.user.imageUri}
                 text={food.user.name}
@@ -29,8 +31,8 @@ const styles = StyleSheet.create({
         elevation: 5,
         borderRadius: 10,
         padding: 20,
-        width: 160,
-        height: 220,
+        width: 190,
+        height: 240,
         marginRight: 20,
         marginBottom: 10
     },
@@ -46,7 +48,7 @@ const styles = StyleSheet.create({
     },
     image: {
         width: '100%',
-        height: 85,
+        height: 100,
         resizeMode: 'contain',
         overflow: 'hidden'
     },
@@ -57,7 +59,8 @@ const styles = StyleSheet.create({
         color: '#605959'
     },
     price: {
-        fontSize: 18,
-        fontWeight: 'bold'
+        fontSize: 22,
+        fontWeight: 'bold',
+        color: Colors.green
     },
 });

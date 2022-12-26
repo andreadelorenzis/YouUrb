@@ -7,3 +7,7 @@ export function validateCellphone(cellphone) {
     const regex = /^\d{10}$/;
     return regex.test(cellphone);
 }
+
+export function formatPrice(price) {
+    return price.toFixed(2) + '€';
+}
