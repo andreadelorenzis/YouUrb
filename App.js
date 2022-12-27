@@ -28,6 +28,9 @@ import CategoryFoodsScreen from './screens/NoWaste/CategoryFoodsScreen';
 import CartScreen from './screens/NoWaste/CartScreen';
 import FoodsContextProvider from './store/foods-context';
 import { FOODS, simulateFetch } from './store/mockdata';
+import SellScreen from './screens/SellScreen';
+import SellFoodScreen from './screens/NoWaste/SellFoodScreen';
+import OfferRideScreen from './screens/UrbinoChatCar/OfferRideScreen';
 
 const Stack = createNativeStackNavigator();
 const BottomTabs = createBottomTabNavigator();
@@ -101,6 +104,20 @@ function AuthenticatedStack() {
         }}
       />
       <BottomTabs.Screen
+        name='Offer'
+        component={SellScreen}
+        options={{
+          tabBarIcon({ color, size }) {
+            return <Ionicons
+              name='add-circle-outline'
+              color={color}
+              size={32}
+              style={{ marginTop: 3 }}
+            />
+          }
+        }}
+      />
+      <BottomTabs.Screen
         name='NoWaste'
         component={NoWasteHomeScreen}
         options={{
@@ -134,6 +151,9 @@ function AuthenticatedStack() {
       <Stack.Screen
         name="FoodsCategory"
         component={CategoryFoodsScreen}
+        options={{
+          title: 'Categorie'
+        }}
       />
       <Stack.Screen
         name='FoodDetails'
@@ -145,12 +165,29 @@ function AuthenticatedStack() {
       <Stack.Screen
         name='RideDetails'
         component={RideDetailsScreen}
+        options={{
+          title: 'Dettagli'
+        }}
       />
       <Stack.Screen
         name='Cart'
         component={CartScreen}
         options={{
           title: "Carrello"
+        }}
+      />
+      <Stack.Screen
+        name='SellFood'
+        component={SellFoodScreen}
+        options={{
+          title: "Vendi un prodotto"
+        }}
+      />
+      <Stack.Screen
+        name='OfferRide'
+        component={OfferRideScreen}
+        options={{
+          title: "Offri un passaggio"
         }}
       />
     </Stack.Navigator>

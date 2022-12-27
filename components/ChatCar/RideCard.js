@@ -80,7 +80,8 @@ const styles = StyleSheet.create({
     height: 10,
     borderRadius: 4,
     backgroundColor: '#333',
-    position: 'relative'
+    position: 'relative',
+    backgroundColor: Colors.red
   },
   markerIcon: {
     position: 'absolute',
@@ -98,7 +99,7 @@ const styles = StyleSheet.create({
   lineMiddle: {
     flex: 1,
     height: 1,
-    backgroundColor: '#333',
+    backgroundColor: Colors.red,
   },
   textInfo: {
     fontSize: 16,

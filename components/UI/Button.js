@@ -1,21 +1,26 @@
 import { Pressable, View, Text, StyleSheet } from "react-native";
 import { Colors } from "../../constants/Colors.js";
 
-export default function Button({ children, onPress, mode, style, size, iconLeft, iconRight }) {
+export default function Button({
+    children, onPress, mode, style, size, iconLeft, iconRight
+}) {
     return (
-        <View style={[styles.buttonContainer, style]}>
+        <View style={[
+            styles.button,
+            styles.buttonContainer,
+            style,
+            mode === 'transparent' ? styles.transparentBtn : {},
+            mode === 'cancel' ? styles.cancelBtn : {}
+        ]}>
             <Pressable
                 onPress={onPress}
+                android_ripple={{ color: '#ccc' }}
                 style={[
                     ({ pressed }) => pressed && styles.pressed,
-                    style,
+                    styles.innerContainer
                 ]}
             >
-                <View style={[
-                    styles.button,
-                    mode === 'transparent' && styles.transparentBtn,
-                    mode === 'cancel' && styles.cancelBtn
-                ]}>
+                <View>
                     {iconLeft}
                     <Text style={[
                         styles.buttonText,
@@ -35,11 +40,16 @@ const styles = StyleSheet.create({
     buttonContainer: {
         borderRadius: 4,
         overflow: 'hidden',
-        backgroundColor: Colors.red,
         width: 100
     },
+    innerContainer: {
+        width: '100%',
+        height: '100%',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
     button: {
-        padding: 8,
+        backgroundColor: Colors.red,
         height: 45,
         flexDirection: 'row',
         justifyContent: 'center',

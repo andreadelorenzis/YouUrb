@@ -1,7 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
-export default function CustomPicker({ label, items, selectedValue, onValueChange, style }) {
+export default function CustomPicker({
+    label,
+    items,
+    selectedValue,
+    onValueChange,
+    style
+}) {
     return (
         <View>
             <Text style={styles.inputLabel}>{label}</Text>
@@ -22,6 +28,7 @@ const styles = StyleSheet.create({
     picker: {
         backgroundColor: '#F2F2F2',
         marginBottom: 20,
+        backgroundColor: 'white'
     },
     inputLabel: {
         marginBottom: 10
