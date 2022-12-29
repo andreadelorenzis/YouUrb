@@ -15,7 +15,7 @@ export default function ProfilePicture({ source, text, avgRating, style, size })
             />
             <View style={styles.textContainer}>
                 {text && <Text style={styles.text}>{text}</Text>}
-                {avgRating && <ReviewStars averageRating={avgRating} size={13} />}
+                {avgRating && avgRating !== 0 && <ReviewStars averageRating={avgRating} size={13} />}
             </View>
         </View>
     )

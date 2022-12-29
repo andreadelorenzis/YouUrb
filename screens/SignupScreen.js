@@ -177,6 +177,7 @@ function SignupScreen() {
             // Create user object and save it in storage
             const user = new User(
                 accountInfo.name,
+                accountInfo.email,
                 accountInfo.surname,
                 personalInfo.address,
                 personalInfo.fiscalCode,

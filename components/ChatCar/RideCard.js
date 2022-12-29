@@ -3,26 +3,13 @@ import { View, Text, Image, StyleSheet, TouchableOpacity, Pressable } from 'reac
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../../constants/Colors';
 import ProfilePicture from '../User/ProfilePicture';
+import Roadmap from './Roadmap';
 
 function RideCard({ ride, onPress }) {
   return (
     <Pressable style={styles.container} onPress={onPress}>
       <View style={styles.header}>
-        <View style={styles.line}>
-          <View style={styles.dot}>
-            <Text style={styles.dotText}>{ride.departure}</Text>
-          </View>
-          <View style={styles.lineMiddle} />
-          <View style={styles.dot}>
-            <Ionicons
-              name="location"
-              style={styles.markerIcon}
-              size={30}
-              color="#F42E0F"
-            />
-            <Text style={styles.dotText}>{ride.destination}</Text>
-          </View>
-        </View>
+        <Roadmap departure={ride.departureCity} destination={ride.destinationCity} />
       </View>
       <Text style={styles.textInfo}>
         <Text style={{ color: Colors.textSecondary }}>Partenza il </Text>
@@ -30,7 +17,7 @@ function RideCard({ ride, onPress }) {
       </Text>
       <Text style={styles.textInfo}>
         <Text style={{ color: Colors.textSecondary }}>Destinazione </Text>
-        <Text style={{ fontWeight: 'bold' }}>{ride.destination}</Text>
+        <Text style={{ fontWeight: 'bold' }}>{ride.destinationCity}</Text>
       </Text>
       <Text style={styles.textInfo}>
         <Text style={{ color: Colors.textSecondary }}>Posti </Text>
@@ -67,39 +54,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 20
-  },
-  line: {
-    width: '80%',
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 8,
-    marginBottom: 16,
-  },
-  dot: {
-    width: 10,
-    height: 10,
-    borderRadius: 4,
-    backgroundColor: '#333',
-    position: 'relative',
-    backgroundColor: Colors.red
-  },
-  markerIcon: {
-    position: 'absolute',
-    top: -25,
-    left: -10,
-    width: 30
-  },
-  dotText: {
-    position: 'absolute',
-    top: 10,
-    left: -25,
-    width: 50,
-    textAlign: 'center'
-  },
-  lineMiddle: {
-    flex: 1,
-    height: 1,
-    backgroundColor: Colors.red,
   },
   textInfo: {
     fontSize: 16,
