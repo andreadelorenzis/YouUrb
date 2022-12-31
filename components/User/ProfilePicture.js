@@ -5,7 +5,7 @@ export default function ProfilePicture({ source, text, avgRating, style, size })
     return (
         <View style={[styles.container, style]}>
             <Image
-                source={source}
+                source={source ? source : require('../../assets/foods/account_black.png')}
                 style={[
                     styles.image,
                     size

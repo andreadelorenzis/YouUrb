@@ -17,10 +17,12 @@ export default function Button({
                 android_ripple={{ color: '#ccc' }}
                 style={[
                     ({ pressed }) => pressed && styles.pressed,
-                    styles.innerContainer
                 ]}
             >
-                <View>
+                <View style={{
+                    flexDirection: 'row',
+                    alignItems: 'center'
+                }}>
                     {iconLeft}
                     <Text style={[
                         styles.buttonText,
@@ -32,7 +34,7 @@ export default function Button({
                     {iconRight}
                 </View>
             </Pressable>
-        </View>
+        </View >
     )
 }
 

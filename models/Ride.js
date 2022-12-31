@@ -4,7 +4,6 @@ export class Ride {
         destinationCity,
         departureLocation,
         date,
-        hour,
         price,
         description,
         totalSeats,
@@ -17,7 +16,6 @@ export class Ride {
         this.destinationCity = destinationCity;
         this.departureLocation = departureLocation;
         this.date = date;
-        this.hour = hour;
         this.price = price;
         this.description = description;
         this.totalSeats = totalSeats;

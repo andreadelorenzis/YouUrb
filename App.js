@@ -22,7 +22,6 @@ import NoWasteHomeScreen from './screens/NoWaste/HomeScreen';
 import UrbinoChatCarScreen from './screens/UrbinoChatCar/HomeScreen';
 import { User } from './models/User';
 import { Colors } from './constants/Colors';
-import ProfileScreen from './screens/Profile/ProfileScreen';
 import FoodDetailsScreen from './screens/NoWaste/FoodDetailsScreen';
 import RideDetailsScreen from './screens/UrbinoChatCar/RideDetails';
 import CategoryFoodsScreen from './screens/NoWaste/CategoryFoodsScreen';
@@ -42,10 +41,12 @@ import MessagesScreen from './screens/Inbox/MessagesScreen';
 import NotificationsScreen from './screens/Inbox/NotificationsScreen';
 import RidesBookedScreen from './screens/UrbinoChatCar/RidesBookedScreen';
 import SettingsScreen from './screens/Profile/SettingsScreen';
+import RidesOverviewScreen from './screens/UrbinoChatCar/RidesOverviewScreen';
+import ProfileDashboard from './screens/Profile/ProfileDashboard';
+import ProfileScreen from './screens/Profile/ProfileScreen';
 
 const Stack = createNativeStackNavigator();
 const BottomTabs = createBottomTabNavigator();
-const Drawer = createDrawerNavigator();
 const TopTabs = createMaterialTopTabNavigator();
 
 function UnauthenticatedStack() {
@@ -172,18 +173,6 @@ function AuthenticatedStack() {
     />
   </BottomTabs.Navigator>
 }
-function ProfileDetailsNavigator() {
-  return <TopTabs.Navigator>
-    <TopTabs.Screen
-      name="Informazioni"
-      component={InformationScreen}
-    />
-    <TopTabs.Screen
-      name="Recensioni"
-      component={RatingsScreen}
-    />
-  </TopTabs.Navigator>
-}
 
 function InboxNavigator() {
   return <TopTabs.Navigator>
@@ -304,12 +293,23 @@ function RidesStackNavigator() {
     <Stack.Screen
       name='ChatCar'
       component={UrbinoChatCarScreen}
+      options={{
+        title: "Trova un viaggio"
+      }}
     />
     <Stack.Screen
       name='RideDetails'
       component={RideDetailsScreen}
       options={{
         headerTitle: 'Dettagli',
+        headerRight: () => null
+      }}
+    />
+    <Stack.Screen
+      name='RidesOverview'
+      component={RidesOverviewScreen}
+      options={{
+        headerTitle: 'Passaggi trovati',
         headerRight: () => null
       }}
     />
@@ -375,11 +375,11 @@ function ProfileStackNavigator() {
   }}>
     <Stack.Screen
       name='Profile'
-      component={ProfileScreen}
+      component={ProfileDashboard}
     />
     <Stack.Screen
       name='ProfileDetails'
-      component={ProfileDetailsNavigator}
+      component={ProfileScreen}
       options={{
         headerTitle: "Profilo"
       }}

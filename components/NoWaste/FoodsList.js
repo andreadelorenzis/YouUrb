@@ -47,9 +47,4 @@ const styles = StyleSheet.create({
         flex: 1,
         width: '100%'
     },
-    cardContainer: {
-        flex: 1,
-        width: '100%',
-        backgroundColor: 'red'
-    }
 });

@@ -12,7 +12,19 @@ export default function RidesList({ rides, listOptions }) {
             });
         }
 
-        return <RideCard ride={itemData.item} onPress={pressRideHandler} />
+        let expand;
+
+        if (listOptions && 'horizontal' in listOptions) {
+            expand = false;
+        } else {
+            expand = true;
+        }
+
+        return <RideCard
+            ride={itemData.item}
+            onPress={pressRideHandler}
+            expand={expand}
+        />
     }
 
     return (
@@ -29,6 +41,8 @@ export default function RidesList({ rides, listOptions }) {
 
 const styles = StyleSheet.create({
     ridesContainer: {
-        marginBottom: 40
+        paddingVertical: 10,
+        marginBottom: 40,
+        width: '100%'
     },
 });

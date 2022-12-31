@@ -17,18 +17,18 @@ export default function SellScreen() {
 
     return (
         <View style={styles.container}>
-            <View style={[styles.button, styles.topButton]}>
-                <Pressable
-                    onPress={openSellFoodsPageHandler}
-                    style={[
-                        ({ pressed }) => pressed && styles.pressed,
-                        styles.pressable
-                    ]}
-                >
+            <Pressable
+                onPress={openSellFoodsPageHandler}
+                style={[
+                    ({ pressed }) => pressed && styles.pressed,
+                    styles.pressable
+                ]}
+            >
+                <View style={[styles.button, styles.topButton]}>
                     <Image style={styles.image} source={require('../assets/foods/food.png')} />
                     <Text style={styles.text}>Vendi un alimento</Text>
-                </Pressable>
-            </View>
+                </View>
+            </Pressable>
             <View style={[styles.button, styles.bottomButton]}>
                 <Pressable
                     onPress={openSellRidesCarPageHandler}
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     pressable: {
         justifyContent: 'center',
         alignItems: 'center',
-        width: 100,
+        borderRadius: 125
     },
     pressed: {
         opacity: 0.5

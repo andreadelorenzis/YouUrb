@@ -1,13 +1,10 @@
 import { Text, View, StyleSheet, FlatList } from 'react-native'
 import { useContext, useEffect, useState } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AuthContext } from '../store/auth-context';
 import ProfilePicture from '../components/User/ProfilePicture';
 import { FOODS, RIDES, simulateFetch } from '../store/mockdata';
-import FoodCard from '../components/NoWaste/FoodCard';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { Colors } from '../constants/Colors';
-import RideCard from '../components/ChatCar/RideCard';
 import { useNavigation } from '@react-navigation/native';
 import FoodsList from '../components/NoWaste/FoodsList';
 import RidesList from '../components/ChatCar/RidesList';

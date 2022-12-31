@@ -1,121 +1,113 @@
-import { useContext } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
-import ProfilePicture from "../../components/User/ProfilePicture";
+
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import { useContext, useEffect, useState } from "react";
+import ErrorOverlay from "../../components/UI/ErrorOverlay";
+import LoadingOverlay from "../../components/UI/LoadingOverlay";
 import { AuthContext } from "../../store/auth-context";
-import { Ionicons } from '@expo/vector-icons';
-import { Colors } from "../../constants/Colors";
-import Button from "../../components/UI/Button";
-import ProfileButton from "../../components/User/ProfileButton";
-import { useNavigation } from "@react-navigation/native";
+import { simulateFetch } from "../../store/mockdata";
+import InformationScreen from "./InformationScreen";
+import RatingsScreen from "./RatingsScreen";
+import { PROFILES } from "../../store/mockdata";
+import { Profile } from "../../models/Profile";
+import { Review } from "../../models/Review";
 
-export default function ProfileScreen() {
-    const authCtx = useContext(AuthContext);
-    const user = authCtx.user;
+export default function ProfileScreen({ route }) {
+    const [user, setUser] = useState();
+    const [isFetching, setIsFetching] = useState(true);
+    const [isMyProfile, setIsMyProfile] = useState(false);
+    const [error, setError] = useState();
 
-    const navigation = useNavigation();
+    const myUserInfo = useContext(AuthContext).user;
 
-    return (
-        <ScrollView style={styles.container}>
-            <Pressable
-                style={({ pressed }) => (pressed ? styles.pressed : null)}
-                onPress={() => navigation.navigate("ProfileDetails")}
-            >
-                <View style={styles.profileButton}>
-                    <ProfilePicture
-                        source={user.imageUri
-                            ? user.imageUri
-                            : require('../../assets/foods/account_black.png')}
-                        style={styles.profilePicture}
-                    />
-                    <View style={styles.textContainer}>
-                        <Text style={styles.name}>{user.name}</Text>
-                        <Text>Visualizza il mio profilo</Text>
-                    </View>
-                    <Ionicons name="chevron-forward-outline" size={20} color={Colors.textSecondary} />
-                </View>
-            </Pressable>
-            <ProfileButton
-                iconName="receipt-outline"
-                text="I miei ordini"
-                onPress={() => navigation.navigate("MyOrders")}
-            />
-            <ProfileButton
-                iconName="cash-outline"
-                text="Saldo"
-                onPress={() => navigation.navigate("Balance")}
-            />
-            <ProfileButton
-                iconName="pizza-outline"
-                text="Prodotti venduti"
-                onPress={() => navigation.navigate("MyProducts")}
-            />
-            <ProfileButton
-                iconName="car-sport-outline"
-                text="Passaggi offerti"
-                onPress={() => navigation.navigate("MyRides")}
-            />
-            <ProfileButton
-                iconName="bookmark-outline"
-                text="Salvati"
-                onPress={() => { }}
-            />
-            <ProfileButton
-                iconName="settings-outline"
-                text="Impostazioni"
-                onPress={() => navigation.navigate('Settings')}
-                style={{ marginTop: 20 }}
-            />
-            <ProfileButton
-                iconName="folder-outline"
-                text="Note legali"
-                onPress={() => { }}
-            />
-            <ProfileButton
-                iconName="help-outline"
-                text="Centro assistenza"
-                onPress={() => { }}
-            />
-            <ProfileButton
-                iconName="happy-outline"
-                text="Invia il tuo feedback"
-                onPress={() => { }}
-            />
-            <ProfileButton
-                iconName="exit-outline"
-                text="Esci"
-                onPress={() => authCtx.logout()}
-                style={{ marginTop: 20, marginBottom: 30 }}
-            />
-        </ScrollView>
-    )
+    const mockData = new Profile(
+        "",
+        myUserInfo.name,
+        "",
+        "",
+        5,
+        [
+            new Review(
+                {
+                    name: "ethanD",
+                    imageUri: require("../../assets/people/ethan.jpg"),
+                    profileId: "p3"
+                },
+                new Date(2023, 1, 24, 8, 40),
+                5,
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                Math.random().toString(36).substring(2, 9)
+            ),
+            new Review(
+                {
+                    name: "ethanD",
+                    imageUri: require("../../assets/people/ethan.jpg"),
+                    profileId: "p3"
+                },
+                new Date(2023, 1, 24, 8, 40),
+                5,
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                Math.random().toString(36).substring(2, 9)
+            )
+        ],
+        [],
+        [],
+        myUserInfo.id
+    );
+
+    useEffect(() => {
+        const userId = route.params ? route.params.userId : null;
+
+        if (userId) {
+            fetchProfileInfo();
+            setIsMyProfile(false);
+        } else {
+            setUser(mockData);
+            setIsMyProfile(true);
+            setIsFetching(false);
+        }
+    }, []);
+
+    async function fetchProfileInfo() {
+        setIsFetching(true);
+        try {
+            const response = await simulateFetch();
+            const fetchedUser = PROFILES.find(user => user.id === userId);
+            setUser(fetchedUser);
+        } catch (error) {
+            setError(error);
+            console.warn(error);
+        }
+        setIsFetching(false);
+    }
+
+    function errorHandler() {
+        setError(null);
+        fetchProfileInfo();
+    }
+
+    if (error && !isFetching) {
+        return <ErrorOverlay
+            message="C'è stato un errore. Riprova più tardi."
+            onConfirm={errorHandler}
+        />
+    }
+
+    if (isFetching) {
+        return <LoadingOverlay />
+    }
+
+    const TopTabs = createMaterialTopTabNavigator();
+
+    return <TopTabs.Navigator>
+        <TopTabs.Screen
+            name="Informazioni"
+            children={(props) =>
+                <InformationScreen {...props} user={user} isMyProfile={isMyProfile} />}
+        />
+        <TopTabs.Screen
+            name="Recensioni"
+            children={(props) =>
+                <RatingsScreen {...props} user={user} isMyProfile={isMyProfile} />}
+        />
+    </TopTabs.Navigator>
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1
-    },
-    profileButton: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        backgroundColor: 'white',
-        padding: 10,
-        paddingVertical: 20,
-        marginBottom: 20,
-        borderBottomColor: '#D7D7D7',
-        borderBottomWidth: 1
-    },
-    textContainer: {
-        flex: 1
-    },
-    name: {
-        fontWeight: 'bold'
-    },
-    profilePicture: {
-        width: 50,
-        height: 50
-    },
-    pressed: {
-        opacity: 0.7
-    },
-});

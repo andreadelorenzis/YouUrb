@@ -8,6 +8,7 @@ import ErrorOverlay from '../../components/UI/ErrorOverlay';
 import { Colors } from '../../constants/Colors';
 import ProfilePicture from '../../components/User/ProfilePicture';
 import Button from '../../components/UI/Button';
+import { formatDate, formatHour } from '../../utils/Validation';
 
 export default function RideDetails({ route }) {
     const [ride, setRide] = useState();
@@ -68,12 +69,12 @@ export default function RideDetails({ route }) {
             </View>
             <View style={styles.rowContainer}>
                 <Text style={styles.labelText}>Partenza il:</Text>
-                <Text style={styles.primaryText}>{ride.date}</Text>
+                <Text style={styles.primaryText}>{formatDate(ride.date)}</Text>
             </View>
             <View style={styles.departureContainer}>
                 <View>
                     <Text style={[styles.labelText, styles.hourLabel]}>Ore:</Text>
-                    <Text style={styles.primaryText}>{ride.hour}</Text>
+                    <Text style={styles.primaryText}>{formatHour(ride.date)}</Text>
                 </View>
                 <Text style={[styles.primaryText, styles.departureText]}>{ride.departureLocation}</Text>
             </View>

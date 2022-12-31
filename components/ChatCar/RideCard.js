@@ -4,16 +4,17 @@ import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../../constants/Colors';
 import ProfilePicture from '../User/ProfilePicture';
 import Roadmap from './Roadmap';
+import { formatDate } from '../../utils/Validation';
 
-function RideCard({ ride, onPress }) {
+function RideCard({ ride, onPress, expand, style }) {
   return (
-    <Pressable style={styles.container} onPress={onPress}>
+    <Pressable style={[styles.container, style, expand && styles.expanded]} onPress={onPress}>
       <View style={styles.header}>
         <Roadmap departure={ride.departureCity} destination={ride.destinationCity} />
       </View>
       <Text style={styles.textInfo}>
         <Text style={{ color: Colors.textSecondary }}>Partenza il </Text>
-        <Text style={{ fontWeight: 'bold' }}>{ride.date}</Text>
+        <Text style={{ fontWeight: 'bold' }}>{formatDate(ride.date)}</Text>
       </Text>
       <Text style={styles.textInfo}>
         <Text style={{ color: Colors.textSecondary }}>Destinazione </Text>
@@ -45,10 +46,17 @@ const styles = StyleSheet.create({
     elevation: 5,
     borderRadius: 10,
     padding: 20,
-    marginRight: 20,
     width: 250,
     height: 210,
-    marginBottom: 10
+    marginRight: 20,
+    marginBottom: 20
+  },
+  expanded: {
+    flex: 1,
+    marginRight: 5,
+    width: '100%',
+    maxWidth: 400,
+    marginLeft: 5
   },
   header: {
     justifyContent: 'center',

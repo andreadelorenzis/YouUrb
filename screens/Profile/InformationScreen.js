@@ -4,9 +4,9 @@ import { AuthContext } from "../../store/auth-context";
 import ProfilePicture from "../../components/User/ProfilePicture";
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from "../../constants/Colors";
+import Button from "../../components/UI/Button";
 
-export default function InformationScreen() {
-    const user = useContext(AuthContext).user;
+export default function InformationScreen({ user, isMyProfile }) {
 
     return (
         <View style={styles.container}>
@@ -18,22 +18,24 @@ export default function InformationScreen() {
                     size={150}
                     style={styles.profilePicture}
                 />
-                <Text style={styles.name}>{user.name} {user.surname}</Text>
-            </View>
-            <View style={styles.infoContainer}>
-                <Ionicons name="mail" size={24} color={Colors.textSecondary} />
-                <Text style={styles.email}>{user.email}</Text>
+                <Text style={styles.name}>{user.username}</Text>
+                <Button
+                    iconRight={<Ionicons name="chatbox-ellipses-outline" size={24} color="#ccc" />}
+                    style={styles.button}
+                >
+                    Messaggio
+                </Button>
             </View>
             {
-                user.cellphone && <View style={styles.infoContainer}>
-                    <Ionicons name="phone-portrait" size={24} color={Colors.textSecondary} />
-                    <Text style={styles.email}>{user.cellphone}</Text>
+                user.email && <View style={styles.infoContainer}>
+                    <Ionicons name="mail" size={24} color={Colors.textSecondary} />
+                    <Text style={styles.email}>{user.email}</Text>
                 </View>
             }
             {
                 <View style={styles.infoContainer}>
-                    <Text style={{ fontWeight: 'bold', fontSize: 18 }}>Bio:</Text>
                     {user.bio && <Text style={styles.email}>{user.bio}</Text>}
+                    {user.residence && <Text>{user.description}</Text>}
                 </View>
             }
         </View>
@@ -66,5 +68,10 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         flexDirection: 'row',
         alignItems: 'center'
+    },
+    button: {
+        backgroundColor: '#5A5F80',
+        width: 200,
+        marginTop: 20
     }
 });

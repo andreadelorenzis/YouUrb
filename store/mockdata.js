@@ -1,6 +1,8 @@
 import { FoodCategory } from "../models/FoodCategory";
 import { Food } from "../models/Food";
 import { Ride } from "../models/Ride";
+import { Review } from "../models/Review";
+import { Profile } from "../models/Profile";
 
 export const CATEGORIES = [
     new FoodCategory(
@@ -59,7 +61,8 @@ export const FOODS = [
         {
             name: "Mary81",
             imageUri: require("../assets/people/vicky.jpg"),
-            avgRating: 5
+            avgRating: 5,
+            profileId: 'p1'
         },
         ['cat4'],
         Math.random().toString(36).substring(2, 9),
@@ -72,7 +75,8 @@ export const FOODS = [
         {
             name: "Mary81",
             imageUri: require("../assets/people/vicky.jpg"),
-            avgRating: 5
+            avgRating: 5,
+            profileId: 'p1'
         },
         ['cat4'],
         Math.random().toString(36).substring(2, 9),
@@ -85,7 +89,8 @@ export const FOODS = [
         {
             name: "Mary81",
             imageUri: require("../assets/people/vicky.jpg"),
-            avgRating: 5
+            avgRating: 5,
+            profileId: 'p1'
         },
         ['cat4'],
         Math.random().toString(36).substring(2, 9),
@@ -98,7 +103,8 @@ export const FOODS = [
         {
             name: "Mary81",
             imageUri: require("../assets/people/vicky.jpg"),
-            avgRating: 5
+            avgRating: 5,
+            profileId: 'p1'
         },
         ['cat4'],
         Math.random().toString(36).substring(2, 9),
@@ -111,7 +117,8 @@ export const FOODS = [
         {
             name: "Mary81",
             imageUri: require("../assets/people/vicky.jpg"),
-            avgRating: 5
+            avgRating: 5,
+            profileId: 'p1'
         },
         ['cat4'],
         Math.random().toString(36).substring(2, 9),
@@ -124,7 +131,8 @@ export const FOODS = [
         {
             name: "Mary81",
             imageUri: require("../assets/people/vicky.jpg"),
-            avgRating: 5
+            avgRating: 5,
+            profileId: 'p1'
         },
         ['cat4'],
         Math.random().toString(36).substring(2, 9),
@@ -137,7 +145,8 @@ export const FOODS = [
         {
             name: "Mary81",
             imageUri: require("../assets/people/vicky.jpg"),
-            avgRating: 5
+            avgRating: 5,
+            profileId: 'p1'
         },
         ['cat4'],
         Math.random().toString(36).substring(2, 9),
@@ -150,7 +159,8 @@ export const FOODS = [
         {
             name: "andrew22",
             imageUri: require("../assets/people/craig.jpg"),
-            avgRating: 5
+            avgRating: 5,
+            profileId: "p2"
         },
         ['cat5'],
         Math.random().toString(36).substring(2, 9),
@@ -163,7 +173,8 @@ export const FOODS = [
         {
             name: "ethanD",
             imageUri: require("../assets/people/ethan.jpg"),
-            avgRating: 5
+            avgRating: 5,
+            profileId: "p3"
         },
         ['cat5'],
         Math.random().toString(36).substring(2, 9),
@@ -176,7 +187,8 @@ export const FOODS = [
         {
             name: "julian99",
             imageUri: require("../assets/people/julian.jpg"),
-            avgRating: 5
+            avgRating: 5,
+            profileId: "p4"
         },
         ['cat9'],
         Math.random().toString(36).substring(2, 9),
@@ -193,8 +205,7 @@ export const RIDES = [
         'Urbino',
         'Roma',
         "Piazza della Repubblica, Urbino",
-        "24/01/2022",
-        "8:40",
+        new Date(2023, 1, 24, 8, 4),
         '5,00€',
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         4,
@@ -202,7 +213,8 @@ export const RIDES = [
         {
             name: "marcolol",
             imageUri: require("../assets/people/luis.jpg"),
-            avgRating: 5
+            avgRating: 5,
+            profileId: Math.random().toString(36).substring(2, 9),
         },
         Math.random().toString(36).substring(2, 9)
     ),
@@ -210,8 +222,7 @@ export const RIDES = [
         'Urbino',
         'Milano',
         "Piazza della Repubblica, Urbino",
-        "24/01/2022",
-        "8:40",
+        new Date(2023, 1, 24, 8, 40),
         '12,00€',
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         4,
@@ -219,7 +230,8 @@ export const RIDES = [
         {
             name: "sMarcus11",
             imageUri: require("../assets/people/michael.jpg"),
-            avgRating: 5
+            avgRating: 5,
+            profileId: Math.random().toString(36).substring(2, 9),
         },
         Math.random().toString(36).substring(2, 9)
     ),
@@ -227,8 +239,7 @@ export const RIDES = [
         'Urbino',
         'Bologna',
         "Piazza della Repubblica, Urbino",
-        "24/01/2022",
-        "8:40",
+        new Date(2023, 1, 24, 8, 40),
         '4,50€',
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         4,
@@ -236,7 +247,8 @@ export const RIDES = [
         {
             name: "davincisara",
             imageUri: require("../assets/people/jason.jpg"),
-            avgRating: 5
+            avgRating: 5,
+            profileId: Math.random().toString(36).substring(2, 9),
         },
         Math.random().toString(36).substring(2, 9)
     ),
@@ -244,8 +256,7 @@ export const RIDES = [
         'Urbino',
         'Ancona',
         "Piazza della Repubblica, Urbino",
-        "24/01/2022",
-        "8:40",
+        new Date(2023, 1, 24, 8, 40),
         '4,00€',
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         4,
@@ -253,10 +264,127 @@ export const RIDES = [
         {
             name: "Mary81",
             imageUri: require("../assets/people/vicky.jpg"),
-            avgRating: 5
+            avgRating: 5,
+            profileId: Math.random().toString(36).substring(2, 9),
         },
         Math.random().toString(36).substring(2, 9)
     ),
+    new Ride(
+        'Bologna',
+        'Urbino',
+        "Piazza Maggiore, Bologna",
+        new Date(2023, 1, 24, 8, 40),
+        '4,00€',
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        4,
+        0,
+        {
+            name: "Mary81",
+            imageUri: require("../assets/people/vicky.jpg"),
+            avgRating: 5,
+            profileId: Math.random().toString(36).substring(2, 9),
+        },
+        Math.random().toString(36).substring(2, 9)
+    ),
+    new Ride(
+        'Bologna',
+        'Urbino',
+        "Piazza Maggiore, Bologna",
+        new Date(2023, 1, 24, 8, 40),
+        '4,00€',
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        4,
+        0,
+        {
+            name: "Mary81",
+            imageUri: require("../assets/people/vicky.jpg"),
+            avgRating: 5,
+            profileId: Math.random().toString(36).substring(2, 9),
+        },
+        Math.random().toString(36).substring(2, 9)
+    ),
+    new Ride(
+        'Bologna',
+        'Urbino',
+        "Piazza Maggiore, Bologna",
+        new Date(2023, 1, 24, 8, 40),
+        '4,00€',
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        4,
+        0,
+        {
+            name: "Mary81",
+            imageUri: require("../assets/people/vicky.jpg"),
+            avgRating: 5,
+            profileId: Math.random().toString(36).substring(2, 9),
+        },
+        Math.random().toString(36).substring(2, 9)
+    ),
+    new Ride(
+        'Bologna',
+        'Urbino',
+        "Piazza Maggiore, Bologna",
+        new Date(2023, 1, 24, 8, 40),
+        '4,00€',
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        4,
+        0,
+        {
+            name: "Mary81",
+            imageUri: require("../assets/people/vicky.jpg"),
+            avgRating: 5,
+            profileId: Math.random().toString(36).substring(2, 9),
+        },
+        Math.random().toString(36).substring(2, 9)
+    ),
+    new Ride(
+        'Bologna',
+        'Urbino',
+        "Piazza Maggiore, Bologna",
+        new Date(2023, 1, 24, 8, 40),
+        '4,00€',
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        4,
+        0,
+        {
+            name: "Mary81",
+            imageUri: require("../assets/people/vicky.jpg"),
+            avgRating: 5,
+            profileId: Math.random().toString(36).substring(2, 9),
+        },
+        Math.random().toString(36).substring(2, 9)
+    ),
+];
+
+export const PROFILES = [
+    new Profile(
+        require("../assets/people/julian.jpg"),
+        "julian99",
+        `lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
+        "Roma, Italia",
+        5,
+        [
+            new Review(
+                {
+                    name: "ethanD",
+                    imageUri: require("../assets/people/ethan.jpg"),
+                    profileId: "p3"
+                },
+                new Date(2023, 1, 24, 8, 40),
+                5,
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                Math.random().toString(36).substring(2, 9)
+            )
+        ],
+        [
+            FOODS[0],
+            FOODS[1],
+        ],
+        [
+            RIDES[0],
+            RIDES[1],
+        ]
+    )
 ];
 
 export function simulateFetch() {

@@ -47,9 +47,10 @@ const styles = StyleSheet.create({
     dotText: {
         position: 'absolute',
         top: 10,
-        left: -25,
-        width: 50,
-        textAlign: 'center'
+        left: -45,
+        width: '100%',
+        width: 100,
+        textAlign: 'center',
     },
     lineMiddle: {
         flex: 1,
