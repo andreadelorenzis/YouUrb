@@ -140,7 +140,7 @@ function AuthenticatedStack() {
       }}
     />
     <BottomTabs.Screen
-      name='Offer'
+      name='SellStack'
       component={SellStackNavigator}
       options={{
         tabBarIcon({ color, size }) {
@@ -321,8 +321,11 @@ function SellStackNavigator() {
     ...commonStackOptions
   }}>
     <Stack.Screen
-      name='Scegli come guadagnare'
+      name='SellScreen'
       component={SellScreen}
+      options={{
+        headerTitle: "Scegli come guadagnare"
+      }}
     />
     <Stack.Screen
       name='SellFood'

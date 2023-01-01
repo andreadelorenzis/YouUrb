@@ -46,12 +46,12 @@ export default function ProfileDashboard() {
             />
             <ProfileButton
                 iconName="pizza-outline"
-                text="Prodotti venduti"
+                text="La mia vetrina"
                 onPress={() => navigation.navigate("MyProducts")}
             />
             <ProfileButton
                 iconName="car-sport-outline"
-                text="Passaggi offerti"
+                text="I miei passaggi offerti"
                 onPress={() => navigation.navigate("MyRides")}
             />
             <ProfileButton

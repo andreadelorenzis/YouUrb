@@ -387,6 +387,16 @@ export const PROFILES = [
     )
 ];
 
+export const MY_PRODUCTS = [
+    FOODS[0],
+    FOODS[1]
+];
+
+export const MY_RIDES = [
+    RIDES[0],
+    RIDES[1]
+];
+
 export function simulateFetch() {
     return new Promise((resolve, reject) => {
         // Simulate a delay of 1 second

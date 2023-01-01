@@ -14,7 +14,7 @@ export default function FoodsList({ foods, listOptions }) {
 
         let expand;
 
-        if ('horizontal' in listOptions) {
+        if (listOptions && 'horizontal' in listOptions) {
             expand = false;
         } else {
             expand = true;

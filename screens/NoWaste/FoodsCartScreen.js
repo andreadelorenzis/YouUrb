@@ -10,6 +10,7 @@ import { useNavigation } from "@react-navigation/native";
 import { formatPrice } from "../../utils/Validation";
 import Button from "../../components/UI/Button";
 import { Colors } from "../../constants/Colors";
+import NoItemsOverlay from "../../components/UI/NoItemsOverlay";
 
 export default function CartScreen() {
     const [isFetching, setIsFetching] = useState(false);
@@ -66,11 +67,7 @@ export default function CartScreen() {
     }
 
     if (cartItems.length === 0) {
-        return (
-            <View style={styles.noFoods}>
-                <Text style={styles.noFoodsText}>Nessun cibo nel carrello</Text>
-            </View>
-        );
+        return <NoItemsOverlay message="Nessun cibo nel carrello." />
     }
 
     const CartFooter = (
