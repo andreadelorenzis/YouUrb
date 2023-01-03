@@ -397,6 +397,29 @@ export const MY_RIDES = [
     RIDES[1]
 ];
 
+export const MY_ORDERS = {
+    foods: [
+        {
+            ...FOODS[0],
+            date: new Date(2023, 1, 24, 8, 40),
+        },
+        {
+            ...FOODS[1],
+            date: new Date(2023, 1, 25, 8, 40),
+        }
+    ],
+    rides: [
+        {
+            ...RIDES[0],
+            date: new Date(2023, 1, 24, 8, 40),
+        },
+        {
+            ...RIDES[1],
+            date: new Date(2023, 1, 25, 8, 40),
+        }
+    ]
+}
+
 export function simulateFetch() {
     return new Promise((resolve, reject) => {
         // Simulate a delay of 1 second

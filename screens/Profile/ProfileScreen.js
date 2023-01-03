@@ -14,8 +14,8 @@ import { Review } from "../../models/Review";
 export default function ProfileScreen({ route }) {
     const [user, setUser] = useState();
     const [isFetching, setIsFetching] = useState(true);
-    const [isMyProfile, setIsMyProfile] = useState(false);
     const [error, setError] = useState();
+    const [isMyProfile, setIsMyProfile] = useState(false);
 
     const myUserInfo = useContext(AuthContext).user;
 

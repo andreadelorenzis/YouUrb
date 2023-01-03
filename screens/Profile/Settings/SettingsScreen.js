@@ -1,6 +1,6 @@
 import { Text, View, StyleSheet } from "react-native"
-import ProfileButton from "../../components/User/ProfileButton"
-import { Colors } from "../../constants/Colors";
+import ProfileButton from "../../../components/User/ProfileButton"
+import { Colors } from "../../../constants/Colors";
 
 export default function SettingsScreen() {
     return (
