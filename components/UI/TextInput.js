@@ -22,7 +22,7 @@ export default function CustomTextInput({
 
     return (
         <View style={style}>
-            <Text style={styles.inputLabel}>{label}</Text>
+            {label && <Text style={styles.inputLabel}>{label}</Text>}
             <TextInput
                 style={inputStyles}
                 placeholder={placeholder}
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     input: {
-        height: 40,
+        height: 45,
         borderColor: '#D7D7D7',
         backgroundColor: 'white',
         borderWidth: 1,

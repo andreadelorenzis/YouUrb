@@ -45,18 +45,9 @@ export default function HomeScreen() {
             {
                 user &&
                 <ScrollView style={styles.container}>
-                    <View style={styles.welcomeHeader}>
-                        <ProfilePicture
-                            source={require('../assets/people/albert.jpg')}
-                            hasBorder={true}
-                            size={100}
-                        />
-                        <Text style={styles.welcomeHeaderText}>Bentornato, {"\n"}
-                            {user.name}!</Text>
-                    </View>
                     <View>
                         <View style={styles.foodsHeader}>
-                            <Text style={styles.foodsHeaderText}>Cibi disponibili</Text>
+                            <Text style={styles.foodsHeaderText}>Panoramica cibi</Text>
                             <TouchableOpacity>
                                 <Text style={styles.foodsHeaderButton}>Vedi tutti</Text>
                             </TouchableOpacity>
@@ -71,7 +62,7 @@ export default function HomeScreen() {
                     </View>
                     <View>
                         <View style={styles.ridesHeader}>
-                            <Text style={styles.ridesHeaderText}>Viaggi disponibili</Text>
+                            <Text style={styles.ridesHeaderText}>Panoramica viaggi</Text>
                             <TouchableOpacity>
                                 <Text style={styles.ridesHeaderButton}>Vedi tutti</Text>
                             </TouchableOpacity>
@@ -94,23 +85,12 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-    welcomeHeader: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginBottom: 20,
-        padding: 20
-    },
-    welcomeHeaderText: {
-        fontSize: 25,
-        fontWeight: 'bold',
-        marginLeft: 20
-    },
     foodsHeader: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginBottom: 10,
-        paddingHorizontal: 20
+        paddingHorizontal: 20,
+        marginTop: 40
     },
     foodsHeaderText: {
         fontSize: 20,
@@ -125,7 +105,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginBottom: 20,
+        marginBottom: 10,
         marginTop: 20,
         paddingHorizontal: 20
     },

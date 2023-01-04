@@ -48,7 +48,9 @@ export default function MyOrdersScreen() {
     const TopTabs = createMaterialTopTabNavigator();
 
     return (
-        <TopTabs.Navigator>
+        <TopTabs.Navigator screenOptions={{
+            tabBarIndicatorStyle: { backgroundColor: 'black' }
+        }}>
             <TopTabs.Screen
                 name="Passaggi"
                 children={(props) =>

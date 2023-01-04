@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, View, Text, TouchableOpacity, FlatList } from 'react-native';
 import RideCard from './RideCard';
 
-export default function RidesList({ rides, listOptions }) {
+export default function RidesList({ rides, listOptions, style }) {
     const navigation = useNavigation();
 
     function renderRideItem(itemData) {
@@ -28,7 +28,7 @@ export default function RidesList({ rides, listOptions }) {
     }
 
     return (
-        <View style={styles.ridesContainer}>
+        <View style={[styles.ridesContainer, style]}>
             <FlatList
                 data={rides}
                 keyExtractor={(item) => item.id}
@@ -42,7 +42,6 @@ export default function RidesList({ rides, listOptions }) {
 const styles = StyleSheet.create({
     ridesContainer: {
         paddingVertical: 10,
-        marginBottom: 40,
         width: '100%'
     },
 });

@@ -98,7 +98,9 @@ export default function ProfileScreen({ route }) {
 
     const TopTabs = createMaterialTopTabNavigator();
 
-    return <TopTabs.Navigator>
+    return <TopTabs.Navigator screenOptions={{
+        tabBarIndicatorStyle: { backgroundColor: 'black' }
+    }}>
         <TopTabs.Screen
             name="Informazioni"
             children={(props) =>

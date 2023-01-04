@@ -2,7 +2,7 @@ import { Pressable, View, Text, StyleSheet } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from "../../constants/Colors";
 
-export default function ProfileButton({ iconName, text, onPress, style }) {
+export default function ProfileButton({ iconName, text, onPress, style, customIcon }) {
     return (
         <Pressable
             style={
@@ -10,10 +10,11 @@ export default function ProfileButton({ iconName, text, onPress, style }) {
             }
             onPress={onPress}
         >
-            <View style={styles.profileButton}>
+            <View style={[styles.profileButton]}>
                 {
-                    iconName && <Ionicons name={iconName} size={24} color={Colors.textSecondary} />
+                    !customIcon && iconName && <Ionicons name={iconName} size={24} color={Colors.textSecondary} />
                 }
+                {customIcon}
                 <Text style={styles.text}>{text}</Text>
                 <Ionicons name="chevron-forward-outline" size={20} color={"#797979"} />
             </View>
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
         borderColor: '#D7D7D7',
         padding: 10,
         borderBottomWidth: 1,
-        height: 60
+        height: 60,
     },
     text: {
         flex: 1,
@@ -37,6 +38,7 @@ const styles = StyleSheet.create({
         fontSize: 16
     },
     pressed: {
-        opacity: 0.7
+        opacity: 0.7,
+        backgroundColor: '#ddd',
     }
 })

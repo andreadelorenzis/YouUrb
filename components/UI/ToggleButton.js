@@ -20,15 +20,17 @@ export default function ({ value, type, onValueChange, label }) {
         <Pressable onPress={toggle}>
             {label && <Text style={styles.labelText}>{label}</Text>}
             <View style={styles.container}>
-                <Text style={styles.text}>Si</Text>
-                <View style={styles.toggleButton}>
+                <View style={[
+                    styles.toggleButton,
+                    { backgroundColor: toggled ? Colors.red : '#ccc' }
+                ]}>
                     <Animated.View
                         style={[{
                             transform: [
                                 {
                                     translateX: animationValue.interpolate({
                                         inputRange: [0, 1],
-                                        outputRange: [5, 30],
+                                        outputRange: [2, 16],
                                     }),
                                 },
                             ],
@@ -36,7 +38,6 @@ export default function ({ value, type, onValueChange, label }) {
                         styles.circle]}
                     />
                 </View>
-                <Text style={styles.text}>No</Text>
             </View>
         </Pressable>
     );
@@ -50,16 +51,17 @@ const styles = StyleSheet.create({
     toggleButton: {
         backgroundColor: '#ccc',
         borderRadius: 20,
-        width: 60,
+        width: 40,
         height: 25,
         flexDirection: 'row',
-        marginHorizontal: 10
+        marginHorizontal: 10,
+        alignItems: 'center',
     },
     circle: {
-        backgroundColor: Colors.red,
+        backgroundColor: 'white',
         borderRadius: 12.5,
-        width: 25,
-        height: 25,
+        width: 22,
+        height: 22,
     },
     labelText: {
         marginBottom: 15,

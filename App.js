@@ -40,6 +40,11 @@ import RidesOverviewScreen from './screens/UrbinoChatCar/RidesOverviewScreen';
 import ProfileDashboard from './screens/Profile/ProfileDashboard';
 import ProfileScreen from './screens/Profile/ProfileScreen';
 import SettingsScreen from './screens/Profile/Settings/SettingsScreen';
+import ProfileData from './screens/Profile/Settings/ProfileDataScreen';
+import AccountSettings from './screens/Profile/Settings/AccountSettingsScreen';
+import PaymentSettings from './screens/Profile/Settings/PaymentSettingsScreen';
+import PushNotificationsScreen from './screens/Profile/Settings/PushNotificationsScreen';
+import EmailNotificationsScreen from './screens/Profile/Settings/EmailNotificationsScreen';
 
 const Stack = createNativeStackNavigator();
 const BottomTabs = createBottomTabNavigator();
@@ -171,7 +176,9 @@ function AuthenticatedStack() {
 }
 
 function InboxNavigator() {
-  return <TopTabs.Navigator>
+  return <TopTabs.Navigator screenOptions={{
+    tabBarIndicatorStyle: { backgroundColor: 'black' }
+  }}>
     <TopTabs.Screen
       name="Messaggi"
       component={MessagesScreen}
@@ -420,6 +427,46 @@ function ProfileStackNavigator() {
       component={SettingsScreen}
       options={{
         headerTitle: "Impostazioni",
+        headerRight: () => null
+      }}
+    />
+    <Stack.Screen
+      name='ProfileData'
+      component={ProfileData}
+      options={{
+        headerTitle: "Dati profilo",
+        headerRight: ({ tintColor }) => <Ionicons name='checkmark-outline' size={24} color={tintColor} />
+      }}
+    />
+    <Stack.Screen
+      name='AccountSettings'
+      component={AccountSettings}
+      options={{
+        headerTitle: "Impostazioni account",
+        headerRight: ({ tintColor }) => <Ionicons name='checkmark-outline' size={24} color={tintColor} />
+      }}
+    />
+    <Stack.Screen
+      name='PaymentSettings'
+      component={PaymentSettings}
+      options={{
+        headerTitle: "Impostazioni pagamento",
+        headerRight: () => null
+      }}
+    />
+    <Stack.Screen
+      name='PushNotificationsSettings'
+      component={PushNotificationsScreen}
+      options={{
+        headerTitle: "Notifiche push",
+        headerRight: () => null
+      }}
+    />
+    <Stack.Screen
+      name='EmailNotificationsSettings'
+      component={EmailNotificationsScreen}
+      options={{
+        headerTitle: "Notifiche email",
         headerRight: () => null
       }}
     />
